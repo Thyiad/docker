@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  ngrok:
+    image: thyiad/my-ngrok:latest
+    container_name: my-ngrok
+    ports:
+      - "4443:4443"
+    expose:
+      - 80
+      - 443
+    restart: always
+    environment:
+      VIRTUAL_HOST: '*.tunnel.thyiad.top,tunnel.thyiad.top'
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

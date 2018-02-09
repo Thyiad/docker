@@ -1,0 +1,8 @@
+FROM ubuntu
+MAINTAINER Thyiad <1520583107@qq.com>
+
+COPY conf/ngrokd /ngrokd
+
+RUN chmod +x /ngrokd
+
+ENTRYPOINT /ngrokd --domain="tunnel.thyiad.top"

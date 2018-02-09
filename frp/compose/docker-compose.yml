@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  frp:
+    image: thyiad/my-frp:latest
+    container_name: my-frp
+    ports:
+      - "7000:7000"
+      - "7500:7500"
+    expose:
+      - 80
+      - 443
+    volumes:
+      - frp_conf:/var/frp/conf
+    restart: always
+    environment:
+      VIRTUAL_HOST: '*.frp.thyiad.top,frp.thyiad.top'
+
+volumes:
+    frp_conf:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
