@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  revealjs:
+    image: nbrown/revealjs:latest
+    container_name: myppt
+    restart: always
+    expose:
+      - 8000
+    volumes:
+      - $PWD/content/index.html:/reveal.js/index.html
+      - $PWD/content/js-back.html:/reveal.js/js-back.html
+      - $PWD/content/js-down.html:/reveal.js/js-down.html
+      - $PWD/content/js-forward.html:/reveal.js/js-forward.html
+      - $PWD/content/js-up.html:/reveal.js/js-up.html
+      - $PWD/content/vue-tour.html:/reveal.js/vue-tour.html
+      - $PWD/content/mini-program.html:/reveal.js/mini-program.html
+      - $PWD/content/attach:/reveal.js/attach
+      - $PWD/content/img:/reveal.js/img
+      - $PWD/content/css/theme/black.css:/reveal.js/css/theme/black.css
+      - $PWD/content/css/theme/wx.css:/reveal.js/css/theme/wx.css
+    environment:
+      VIRTUAL_HOST: ppt.thyiad.top
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

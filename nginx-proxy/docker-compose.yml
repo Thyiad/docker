@@ -1,0 +1,17 @@
+version: '3'
+services:
+   nginx-proxy:
+     image: jwilder/nginx-proxy:latest
+     container_name: nginx-proxy
+     restart: always
+     ports:
+       - "80:80"
+       - "443:443"
+     volumes:
+       - /var/run/docker.sock:/tmp/docker.sock:ro   # docker.sock是docker守护进程默认监听的Unix域套接字，容器进程通过它与守护进程进行通信。以后添加新的站点时，nginx将会自动发现并重启服务
+       - ./certs:/etc/nginx/certs:ro    # nginx的证书目录，:ro指定为只读
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

@@ -1,0 +1,51 @@
+{
+  "port": 7300,
+  "host": "0.0.0.0",
+  "pageSize": 30,
+  "proxy": false,
+  "db": "mongodb://mongodb/easy-mock",
+  "unsplashClientId": "",
+  "redis": {
+    "keyPrefix": "[Easy Mock]",
+    "port": 6379,
+    "host": "redis",
+    "password": "",
+    "db": 0
+  },
+  "blackList": {
+    "projects": [], // projectId, e.g."5a4495e16ef711102113e500"
+    "ips": [] // ip, e.g. "127.0.0.1"
+  },
+  "rateLimit": { // https://github.com/koajs/ratelimit
+    "max": 1000,
+    "duration": 1000
+  },
+  "jwt": {
+    "expire": "14 days",
+    "secret": "shared-secret"
+  },
+  "upload": {
+    "types": [".jpg", ".jpeg", ".png", ".gif", ".json", ".yml", ".yaml"],
+    "size": 5242880,
+    "dir": "../public/upload",
+    "expire": {
+      "types": [".json", ".yml", ".yaml"],
+      "day": -1
+    }
+  },
+  "ldap": {
+    "server": "", // Set server to enable LDAP login. e.g. "ldap://localhost:389" or "ldaps://localhost:389"（use SSL）
+    "bindDN": "", // Username，e.g. "cn=admin,dc=example,dc=com"
+    "password": "",
+    "filter": {
+      "base": "", // Base where we can search for users，e.g. "dc=example,dc=com"
+      "attributeName": "" // e.g. "mail" or "email" etc.
+    }
+  },
+  "fe": {
+    "copyright": "",
+    "storageNamespace": "easy-mock_",
+    "timeout": 25000,
+    "publicPath": "/dist/"
+  }
+}
