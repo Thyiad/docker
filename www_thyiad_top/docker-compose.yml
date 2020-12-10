@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  staticFileServer:
+    image: pierrezemb/gostatic:latest
+    container_name: www_thyiad_top
+    restart: always
+    ports:
+      - 8043:8043
+    volumes:
+      - /var/my_docker/www_thyiad_top/blog:/srv/http
+    expose:
+      - 8043
+    environment:
+      VIRTUAL_HOST: www.thyiad.top
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
