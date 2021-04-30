@@ -13,14 +13,15 @@ RUN apt-get update \
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR  /root/app
+WORKDIR  /app
 
 RUN npm i puppeteer \
     && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
     && mkdir -p /home/pptruser/Downloads \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /root/app
+    && chown -R pptruser:pptruser /app
 
-USER pptruser
-
-CMD ["npm", "start"]
+# 如果有子镜像，这两行在文件中使用，否则在这里使用
+# 运维说加了会编译失败。。我的服务器没有科学上网，无法尝试build成功
+# USER pptruser
+# CMD ["npm", "start"]
