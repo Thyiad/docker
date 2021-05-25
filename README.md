@@ -22,4 +22,4 @@
     > 折腾过一下 webRTC，搭建测试站点把玩了一下：https://webrtc.thyiad.top
     > 这个站点可访问，可以网页视频
 - www_thyiad_top
-    > 备案时静态托管过 www.thyiad.top，后面还是继续用的 github pages
+    > 备案时静态托管过 [https://www.thyiad.top](https://www.thyiad.top)，后面还是继续用的 github pages
